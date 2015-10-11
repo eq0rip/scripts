@@ -1,0 +1,19 @@
+me="menutop";
+	$menu_store='';
+	$items=wp_get_nav_menu_items($menu_name);
+	foreach ((array) $items as $key=>$item){
+		$parent=$item->menu_item_parent;
+		$title=$item->title;
+		$url=$item->url;
+		$id=$item->ID;
+		if($parent==0) {
+			$key=$x++;
+			$menu_store[$id]=array('title'=>$title,'url'=>$url);
+						}
+		if($parent!=0){
+			$menu_store[$parent][]=array('title'=>$title,'url'=>$url);
+					   }
+			
+	}
+print_r($menu_store);
+?>
